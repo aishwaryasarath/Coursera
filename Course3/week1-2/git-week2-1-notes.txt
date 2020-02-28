@@ -1,0 +1,40 @@
+git commit -a
+ -> is a shortcut to stage any changes to tracked files and commit them in one
+ step
+ -> does not track new files
+
+
+git commit -a -m "Call check-reboot from main, exit with 1 on error"
+
+when you use the -a shortcut, you skip the staging area. Meaning, you can't add any other changes before creating the commit. So you need to be sure that you've already included everything you want to include in that commit
+when you use the -m shortcut, you can only write short messages and can't use the best practices regarding commit descriptions
+
+Git uses the head alias to represent the currently checked out snapshot of your project.
+Head could be a commit in a different branching of a project if we are
+branching
+
+
+getting more info about the commit before and after the changes
+--------
+git log -p     gives us the patch. press Q to exit. use arrow keys or page down
+ to scroll
+
+git show 983bf8c79fc135d834257feceb11199a9c38ca29  (that is the commit
+numbergo)
+
+git log --stat
+
+git diff (gives new changes made to the file)
+
+If our change was bigger and included several files, we could pass a file by parameter to see the differences relevant to that specific file instead of all the files at the same time. Something else we can do to review changes before adding them is to use the -p flag with the git add command.
+When we use this flag, git will show us the change being added and ask us if we want to stage it or not.
+This way we can detect if there's any changes that we don't want to commit. Let's try that one out.
+
+git add -p (asks if we need to stage the changes)
+
+if we call git diff again, it wont show any changes
+
+instead we can call
+git diff --staged
+
+ git commit -m 'Add a message when everything is ok'

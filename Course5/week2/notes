@@ -1,0 +1,77 @@
+sudo apt install puppet-master
+
+vim tools.pp  [file to storethe rules we want to apply - also called manifests]
+
+htop [to check if command isnt installed yet]
+
+sudo puppet apply -v tools.pp
+
+The catalog is the list of rules that are generated for one specific computer once the server has evaluated all variables, conditionals, and functions.
+
+
+ntp.pp
+sudo puppet apply -v ntp.pp
+
+vim ntp.conf
+check notes for images to see changes in server
+rerun puppet rules with new config
+sudo puppet apply -v ntp.pp
+puppet updated the config file
+
+
+In any configuration management deployment, there's usually a lot of different things to manage.
+Start transcript at 14 seconds0:14
+We might want to install some packages, copy some configuration files, start some services, schedule some periodic tasks. Make sure some users and groups are created, and have access to specific devices. And maybe execute a few commands that aren't provided by existing resources. On top of that, there might be different configurations applied to the different computers in the fleet.
+
+A module is a collection of manifests and associated data
+
+to keep our configuration management organized, we'll group things together under a sensible topic.
+Start transcript at 1 minute 18 seconds1:18
+For example, we could have a module for everything related to monitoring the computer's health, another one for setting up the network stack. And yet another one for configuring a web serving application. So the modules ship the manifest in the associated data. But how is this organized? All manifests get stored in a directory called manifest. The rest of the data is stored in different directories, depending on what it does. The files directory includes files that are copied into the client machines without any changes, like the ntpd.conf file that we saw in our last video. And the templates directory includes files that are pre-processed before they've been copied into the client machines. These templates can include values that get replaced after calculating the manifests, or sections that are only present if certain conditions are valid. There's a bunch more directories that can be part of a module, depending on what exactly the module does. But you don't need to worry about these when creating your first Puppet module. You can start with a simple module that just has one manifest in the manifest directory. This file should be called init.pp, and it should define a class with the same name as the module that you're creating. Then, any files that you rule as use need to be stored in the files or templates directories, depending on whether you copy them directly, or need to pre-process them. For example, this is how the ntp class that we saw in our last video looks like when turned into a module. There's an init.php file which contains the ntp classes that we saw before. And the ntp.conf file that gets deployed onto the machine is now stored in the files directory. Modules like these can look pretty much the same, no matter who's using them. That's why over time, system administrators using Puppet have shared the modules they've written, letting others use the same rules. By now, there's a large collection of prepackaged modules that are shipped and ready to use. If one of those modules does what we want, we can just install it on our Puppet server, and use it in our deployments. Let's install the Apache module provided by Puppet Labs to check out how this works.
+Start transcript at 3 minutes 41 seconds3:41
+Okay, we've installed the module. Let's have a quick look at its contents. First, we'll change into the directory where the module files are stored, and list its contents.
+Start transcript at 4 minutes 1 second4:01
+We see the files, manifests, and templates directories that we mentioned. On top of that, there's a lib directory that adds functions, in fact, to the ones already shipped by Puppet. And the metadata.json file includes some additional data about the module we just installed, like which versions of which operating systems it's compatible with.
+Start transcript at 4 minutes 22 seconds4:22
+Let's peek into the manifests directory.
+Start transcript at 4 minutes 31 seconds4:31
+Whoa, that's a lot of files, kind of like how we split the different things that we want to manage into separate modules. We can also split each separate functionality that we want to configure into separate manifests. This helps us organize our code when we make changes to it, and to see how this directory also contains its own init.pp. As we called out, this manifest is special. It needs to always be present, because it's the first one that's read by Puppet when a module gets included.
+Start transcript at 5 minutes 0 seconds5:00
+So how do we include a module like this one? It's pretty easy. Let's create a manifest file that includes the module we just installed.
+Start transcript at 5 minutes 27 seconds5:27
+Here, we're telling Puppet to include the Apache module. The double colon before the module name lets Puppet know that this is a global module. Let's save this file now, and apply it using Puppet Apply, like we did before.
+Start transcript at 5 minutes 51 seconds5:51
+Our manifest was super simple, it just included the Apache module. But by including the module, we got Puppet to apply all the rules run by default in the module. We now have an Apache server configured and ready to run on this machine, handy, right? Okay, we've just seen how we can organize our code and modules, and how we can even use modules provided by other teams, so we don't have to reinvent the wheel. Up next, there's a reading with pointers to more information, followed by a quick quiz. After that, meet me over in the next video, where we'll check out what we need to do to deploy our rules to more machines.
+
+tree modules/
+
+modules/
+    ntp
+        files
+            ntp.conf
+        manifests
+            init.pp
+
+
+sudo apt install puppet-module-puppetlabs-apache
+cd /usr/share/puppet/modules.available/puppetlabs-apache/
+
+ls -l
+ls -l manifests
+cd
+vim webserver.pp
+
+
+include :: apache
+save
+
+sudo puppet apply -v webserver.pp
+
+
+
+---------
+setting up puppet clients and server
+check notes for images
+We're now ready to see a Puppet deployment in action. We've already installed the Puppet master package on this computer, so we'll use it as the master. Since this is a test deployment to demonstrate Puppet, we'll configure it to automatically sign the certificate requests of the nodes we add. But remember, if we were deploying this to real computers, we'd have to manually sign the requests or implement a proper validating script. We'll do this by calling the Puppet command with the config parameter, and then saying that in this section master we want to set auto sign to true. All right. With that, we can connect to the client that we want to manage using Puppet. We'll connect using SSH to a machine called web server. On this machine, we'll install the Puppet client which is shipped by the Puppet package.
+
+We have the Puppet agent installed. Now we need to configure it to talk to the Puppet server that we're running on the other machine. To do that, we'll use Puppet config like before but this time we'll tell it that we want to set the server to ubuntu.example.com.

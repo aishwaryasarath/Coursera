@@ -1,0 +1,40 @@
+top command to see resources using memory
+
+If it's a variable that's currently being used in a function, the data will be in the CPU's internal memory, and our program will retrieve it really fast. If the data is related to a running program but maybe not the currently executing function, it will likely be in RAM, and our program will still get to a pretty fast. If the data is in a file, our program will need to read it from disk, which is much slower than reading it from RAM, and worse than reading from disk, is reading information from over the network. In this case, we have a lower transmission speed, and we also need to establish the connection to the other endpoint to make the transmission possible, which adds to the total time needed to get to the data.
+
+
+a cache stores data in a form that's faster to access than its original form. There's a ton of examples of caches in IT. A web proxy is a form of cash. It stores websites, images, or videos that are accessed often by users behind the proxy. So they don't need to be downloaded from the Internet every time. DNS services usually implement a local cache for the websites they resolve. So they don't need to query from the Internet every time someone asks for their IP address. The operating system also takes care of some caching for us. It tries to keep as much information as possible in RAM so that we can access it fast. This includes the contents of files or libraries that are accessed often, even if they aren't in use right now. We say that these contents are cached in memory. We call that that if the data is part of a program that's currently running, it will be in RAM. But RAM is limited. If you run enough programs at the same time, you'll fill it up and run out of space. What happens when you run out of RAM? At first, the OS will just remove from RAM anything that's cached, but not strictly necessary. If there's still not enough RAM after that, the operating system will put the parts of the memory that aren't currently in use onto the hard drive in a space called swap.
+
+
+Look when it is getting slow - is it on startup?
+
+logrotate
+
+ab -n 500 site.example.com      [apache bench]
+ssh webserver
+$top  [q to exit]
+nice and renice to assign new priority or change priority of processes already
+running
+
+so we do this:
+
+for pid in $(pidof ffmpeg); do renice 19 $pid; done
+
+and we check again ab -n 500 site.example.com
+
+ps ax | less [shows all the processes and less to scroll through it]
+/ffmpeg [to search]
+q [to exit]
+locate static/001.webm
+grep ffmpeg *
+vim deploy.sh
+
+refer Notes
+delete daemonize part
+
+killall -STOP ffmpeg
+for pid in $(pidof ffmpeg); do while kill -CONT $pid; do sleep 1; done; done;
+
+ab -n 500 site.example.com
+
+

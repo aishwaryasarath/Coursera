@@ -1,0 +1,66 @@
+git clone https://github.com/aishwaryarakesh/health-checks.git
+atom README.md
+
+git commit -a -m "Added one more line to README.md"
+
+git push
+
+git config --global credential.helper cache
+
+git remote -v
+git remote show origin
+git branch -r
+git status
+git fetch # syncs changes from remote repositories to remote branches
+
+git checkout
+git log origin/master
+git status
+git merge origin/master # merges master from remote to local
+
+
+add new branch
+edit a file
+
+git pull
+git log -p -1
+exit using q
+git remote show origin
+git checkout experimenta
+
+
+git remote update
+
+When we checked out the experimental branch, Git automatically copied the contents of the remote branch into the local branch. The working tree has been updated to the contents of the experimental branch. Now we're all set to work on the experimental feature together with our colleague. In this last example, we got the contents of the experimental bunch together with those of the master branch when we called git pull, which also merged new changes onto the master branch. If we want to get the contents of remote branches without automatically merging any contents into the local branches, we can call git remote update. This will fetch the contents of all remote branches, so that we can just call checkout or merge as needed. We've now seen a bunch of different ways that we can use to interact with remote repositories. We've seen how to check their status, how to push and pull changes into repositories, and even how to get new branches out of them. There's still more to come, but you're probably starting to see how useful this can be for collaborating with others. In our past examples, we've only looked at what happens with changes when they can be solved through fast forward. In upcoming videos, we'll look at what happens when we try to push changes, especially when our changes generate conflicts. But before we do that, check out the reading for the list of all the commands involved, and then take the quiz to put this knowledge into practice.
+
+
+======================
+make some changes in local disk_usage.py
+git add -p
+y
+git commit -m 'rename min_absolute to min_gb, use parameter names'
+
+git push
+
+ if a collaborator also had made changes, there will be an error
+
+
+git pull
+
+there are conflicts
+
+
+git log --graph --oneline --all
+
+git log -p origin/master
+
+atom disk_usage.py
+git add disk_usage.py
+git commit
+git push
+git log --graph --oneline --all
+
+
+================
+git checkout -b refactor
+

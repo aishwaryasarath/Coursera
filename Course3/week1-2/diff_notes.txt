@@ -1,0 +1,30 @@
+diff filename1 filename2
+< says line was removed
+> says line was added
+
+diff -u filename1 filename 2
+unified format
+show change lines with context
+
+wdiff shows difference in words instead of working line by line
+other tools are meld, KDiff3, or vimdiff
+
+if a colleague sends a script with a bug, you can do
+diff -u old_file new_file > change.diff
+
+to apply the change to the script
+patch
+
+
+diff -u old_file new_file > change.diff
+diff -u cpu_usage.py cpu_usage_fixed.py > cpu_file_change.diff
+patch cpu_usage.py < cpu_file_change.diff
+
+
+
+cp disk_usage.py disk_usage_original.py
+cp disk_usage.py disk_usage_fixed.py
+
+diff -u disk_usage_original.py disk_usage_fixed.py > disk_usage.diff
+patch disk_usage.py < disk_usage.diff
+./disk_usage.py

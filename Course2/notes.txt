@@ -1,0 +1,11 @@
+### - In python prompt after doing pip3 install arrow
+```python
+import arrow
+date = arrow.get('2020-01-18', 'YYYY-MM-DD')
+date.shift(weeks=+6).format('MMM DD YYYY')
+```
+Inserting a shebang line (such as #!/usr/bin/env python3) as the first line tells the operating system what command we want to use to execute the script.
+
+
+
+

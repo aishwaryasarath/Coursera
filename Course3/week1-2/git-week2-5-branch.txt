@@ -1,0 +1,37 @@
+Branch - a pointer to a particular commit
+master - known good state of project
+create a new branch to try something new without messing up
+
+
+cd checks
+git branch
+git branch new-feature
+git branch
+
+we use git checkout to check out the latest snapshot for both files and for
+branches.
+* is on master
+
+git checkout new-feature
+git branch
+
+* moved to new branch
+
+git checkout -b even-better-feature (to create and switch to new branch)
+
+create a new file free_memory.py
+git commit
+git log -2
+
+
+cd checks
+git status
+ls -;
+git checkout master
+
+git log -2
+
+git branch
+git branch -d new-feature (to delete a branch)
+git branch
+git branch -d even-better-feature

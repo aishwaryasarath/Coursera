@@ -1,0 +1,8 @@
+import re
+
+
+with open('syslog', 'r') as f:
+    for line in f:
+        pattern = r"^([A-Za-z]{3} [0-9]{1,2} [0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2} )\D+\[([0-9]+)"
+        result = re.search(pattern, line)
+        print("{} pid:{}".format(result[1],result[2]))

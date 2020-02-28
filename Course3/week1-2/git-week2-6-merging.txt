@@ -1,0 +1,63 @@
+git branch
+git merge even-better-feature
+
+git log
+
+Git uses two different algorithms to perform a merge, fast-forward and three-way merge. The merge we just performed is an example of a fast-forward merge.
+
+but if master had had a commit before merging there could be conflicts, if
+edits to same parts of same file has happened
+ ''
+ git commit -a -m 'Add comment to main()'
+git checkout even-better-feature
+
+
+same file add a print and delete the comment
+git commit -a -m 'print everythng ok'
+
+checkout master and try merging
+git checkout master
+git merge even-better-feature (Conflict)
+git status
+
+open file
+it looks like this
+#!/usr/bin/env python3
+
+
+def main():
+<<<<<<< HEAD
+    """Checks if there is free memory"""
+=======
+    print("Everything ok")
+>>>>>>> even-better-feature
+    pass
+
+
+main()
+
+
+edit it to
+#!/usr/bin/env python3
+
+
+def main():
+
+    """Checks if there is free memory"""
+    print("Everything ok")
+
+
+
+main()
+
+git add free_memory.py
+git status
+git commit
+
+git log --graph --oneline
+
+git merge --abort (stop merge and reset files to previous workig tree)
+
+
+
+

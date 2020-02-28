@@ -1,0 +1,68 @@
+git config --global user.email 'me@example.com'
+git config --global user.name 'my name'
+
+
+mkdir checks
+cd checks
+git init
+
+# to know files the start with a dot
+ls -la
+# to know the many diff things they contain
+ls -l .git/
+
+cp ../disk_usage.py .
+ls -l
+
+git add disk_usage.py
+git commit
+
+
+cd checks
+ls -l
+git status
+
+
+atom disk_usage.py
+make some changes in atom file and save
+git status
+-- to add the changes to the staging area, so next time we commit, this get
+committed
+git add disk_usage.py
+
+git commit -m 'Add periods to the end of the sentences'
+git status
+
+
+mkdir scripts
+cd scripts
+git init
+git config -l
+
+atom all_checks.py
+chmod +x all_checks.py
+
+git status
+git add all_checks.py
+git commit -m 'create an empty all_checks.py'
+
+add another function to all_checks.py
+
+git status
+git add all_checks.py
+git status
+git commit -m 'add check reboot'
+
+
+commit messages
+---------
+First line is a short summary of the commit
+Followed by a blank line
+
+Followed by a full descriptopn of the changes that detail why they are
+necessary and anything that might be interesting about them.or difficult to
+understand, each line is kept under 72 chars.
+
+git log -> this does line wrapping
+
+

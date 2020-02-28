@@ -1,0 +1,29 @@
+git checkout (to revert a change)
+
+
+delete a function in all_checks.py
+save
+
+./all_checks.py
+
+says function is not defined
+
+git status
+
+git checkout all_checks.py
+git status
+
+if we have to unstage, we can use git reset
+happens sometimes when we use git add *
+
+./all_checks.py > output.txt
+git add *
+git status
+
+git reset HEAD output.txt (terminal shows git restore --staged<file>)
+git status
+
+git reset -p (asks which specific changes you want to reset)
+
+git commit
+shift z shift z twice to exit

@@ -1,0 +1,47 @@
+cd ~/purplebox/
+./purplebox.py
+strace ./purplebox.py
+strace -o failure.strace ./purplebox.py
+less failure.strace
+
+what were you trying to do
+what steps did you follow
+what was tje expected result
+what was the actial result
+
+creating a reproduction case
+Linux - /var/log/syslog  and .xsession-errors
+MacOS - /Library/Logs
+Windows - Event Viewer
+
+disk input and output - iotop
+iostat and vmstat - these tools show statistics on the input/output operations and the virtual memory operations
+If the issue is that the process generates too much input or output, we could use a command like ionice to
+make our backup system reduce its priority to access the disk and let the web services use it too.
+Another option would be that the service is using too much network because it's transmitting the data to be
+backed up to a central server and that transmission blocks everything else. We can check this using iftop, yet another
+tool similar to top that shows the current traffic on the network interfaces.If the backup is eating all the network bandwidth,
+we could look at the documentation for the backup software and check if it already includes an option to limit the bandwidth.
+The rsync command, which is often used for backing up data, includes a -bwlimit, just for this purpose. If that option isn't available, we can use a program like Trickle to limit the
+bandwidth being used. But what if the network isn't the issue either? Remember, we need to put our debugging creativity to work, and come up with other possible reasons for why it's failing.
+Another option could be that the compression algorithms selected is too aggressive, and compressing the backups is using all of the server's processing power. We could solve this by reducing the compression level or using the nice command to reduce the priority of the process and accessing the CPU. If that's still not the case, we need to keep looking, check the logs to see if we find anything that we missed before. Maybe look online for other people dealing with similar problems related to interactions of the backing up software with the web surfing software, and keep doing this until we come up with something that could be causing our problem. I know this sounds like a lot of work, but it's usually not that bad. In general, by using the tools available to us, we can find enough info to land on the right hypothesis after only a few tries and with experience, we'll get better at picking up the most likely hypothesis the first time around. Up next, we'll talk about a tricky type of technical problem that we all have to face, intermittent issues.
+
+cd import_data/
+cat contacts.csv | ./import.py --server test
+wc -l contacts.csv (gives lines in a file)
+
+head -15 contacts.csv
+tail -20 contacts.csv
+
+head -50 contacts.csv | ./import.py --server test  (failed)
+head -50 contacts.csv | head -25 | ./import.py --server test (passed)
+head -50 contacts.csv | tail -25 | ./import.py --server test (failed)
+head -50 contacts.csv | tail -25 | head -13 | ./import.py --server test
+(passed)
+head -50 contacts.csv | tail -25 | tail -12 | head -6 | ./import.py --server
+test (failed)
+head -50 contacts.csv | tail -25 | tail -12 | head -6 | head -3 | ./import.py
+--server
+test (failed)
+
+The short-term remediation here is to tell our user about what we found and how to fix it, so that they can import the data into the production database. The long-term remediation is to figure out why the file was generated with the invalid field in the first place, and make sure that it doesn't happen again. 

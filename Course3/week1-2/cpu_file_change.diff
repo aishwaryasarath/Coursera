@@ -1,0 +1,19 @@
+--- cpu_usage.py	2020-02-03 10:07:02.000000000 -0600
++++ cpu_usage_fixed.py	2020-02-03 10:08:17.000000000 -0600
+@@ -4,7 +4,8 @@
+ 
+ 
+ def check_cpu_usage(percent):
+-    usage = psutil.cpu_percent()
++    usage = psutil.cpu_percent(1)
++    print("DEBUG: usage: {}".format(usage))
+     return usage < percent
+ 
+ 
+@@ -12,6 +13,3 @@
+     print("error! CPU is overloaded")
+ else:
+     print("Everything is ok")
+-
+-
+-# patch cpu_usage.py < cpu_usage.diff
