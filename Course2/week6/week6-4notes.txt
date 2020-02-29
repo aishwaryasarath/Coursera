@@ -1,0 +1,69 @@
+Signalling Processes
+bash scripting - 3 vids
+advanced bash - while loop
+pending
+
+
+
+=========
+
+basename index.HTM .HTM
+
+
+(venv) (base) Rakeshs-Air:week6 rakeshravindran$ ./fruit.sh
+bash: ./fruit.sh: No such file or directory
+(venv) (base) Rakeshs-Air:week6 rakeshravindran$ ./fruits.sh
+bash: ./fruits.sh: Permission denied
+(venv) (base) Rakeshs-Air:week6 rakeshravindran$ chmod +x fruits.sh
+(venv) (base) Rakeshs-Air:week6 rakeshravindran$ ./fruits.sh
+I like peach!
+I like orange!
+I like apple!
+(venv) (base) Rakeshs-Air:week6 rakeshravindran$ cd old_website
+(venv) (base) Rakeshs-Air:old_website rakeshravindran$ touch about.HTM
+(venv) (base) Rakeshs-Air:old_website rakeshravindran$ touch contact.HTM
+(venv) (base) Rakeshs-Air:old_website rakeshravindran$ touch footer.HTM
+(venv) (base) Rakeshs-Air:old_website rakeshravindran$ touch header.HTM
+(venv) (base) Rakeshs-Air:old_website rakeshravindran$ touch index.HTM
+(venv) (base) Rakeshs-Air:old_website rakeshravindran$ ls -l
+total 0
+-rw-r--r--  1 rakeshravindran  staff  0 Feb 28 19:42 about.HTM
+-rw-r--r--  1 rakeshravindran  staff  0 Feb 28 19:42 contact.HTM
+-rw-r--r--  1 rakeshravindran  staff  0 Feb 28 19:42 footer.HTM
+-rw-r--r--  1 rakeshravindran  staff  0 Feb 28 19:42 header.HTM
+-rw-r--r--  1 rakeshravindran  staff  0 Feb 28 19:42 index.HTM
+(venv) (base) Rakeshs-Air:old_website rakeshravindran$ basename index.HTM .HTM
+index
+(venv) (base) Rakeshs-Air:old_website rakeshravindran$ chmod +x rename.sh
+chmod: rename.sh: No such file or directory
+(venv) (base) Rakeshs-Air:old_website rakeshravindran$ cd ..
+(venv) (base) Rakeshs-Air:week6 rakeshravindran$ chmod +x rename.sh
+(venv) (base) Rakeshs-Air:week6 rakeshravindran$ cd old_website
+(venv) (base) Rakeshs-Air:old_website rakeshravindran$ l
+bash: l: command not found
+(venv) (base) Rakeshs-Air:old_website rakeshravindran$ ls
+about.HTM       contact.HTM     footer.HTM      header.HTM      index.HTM       rename.sh
+(venv) (base) Rakeshs-Air:old_website rakeshravindran$ ./rename.sh
+bash: ./rename.sh: /usr/bin/bash: bad interpreter: No such file or directory
+(venv) (base) Rakeshs-Air:old_website rakeshravindran$ ./rename.sh
+mv about.HTM about.html
+mv contact.HTM contact.html
+mv footer.HTM footer.html
+mv header.HTM header.html
+mv index.HTM index.html
+(venv) (base) Rakeshs-Air:old_website rakeshravindran$ ./rename.sh
+(venv) (base) Rakeshs-Air:old_website rakeshravindran$ ls -k
+about.html      contact.html    footer.html     header.html     index.html      rename.sh
+(venv) (base) Rakeshs-Air:old_website rakeshravindra
+
+
+
+tail /var/log/system.log
+tail /var/log/system.log | cut -d' ' -f5-
+
+dash d space to cut to tell it that we want to use a space as a delimiter, and dash f5 dash that tell it that we want to print the field number 5 and everything that comes after it
+
+cut -d' ' -f5- /var/log/system.log | sort | uniq -c | sort -nr | head
+
+
+cat story.txt | ./capitalize_words.py

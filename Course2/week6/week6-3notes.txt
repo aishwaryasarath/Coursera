@@ -1,0 +1,33 @@
+ls -l | less
+
+Quit with q
+
+(venv) (base) Rakeshs-Air:week6 rakeshravindran$ cat spider.txt | tr ' ' '\n' | sort | uniq -c | sort -nr | head
+   7 the
+   3 up
+   3 spider
+   3 And
+   2 spout
+   2 rain
+   2 itsy-bitsy
+   2 came
+   2 Climbed
+   1 water
+
+tr ' ' '\n' translates space to new line
+sorts results alphabetically
+uniq -c displays each match one with prefixing the number of times it occurred
+sort -nr sorting numerically in reverse order
+head print first 10 lines
+
+
+(venv) (base) Rakeshs-Air:week6 rakeshravindran$ cat haiku.txt | ./capitalize.py
+Advance your career,
+Automating with python,
+It's so fun to learn.
+
+(venv) (base) Rakeshs-Air:week6 rakeshravindran$ ./capitalize.py < haiku.txt
+Advance your career,
+Automating with python,
+It's so fun to learn.
+
