@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "./streams_err.py", line 5, in <module>
+    raise ValueError("Now we generate an error to STDERR")
+ValueError: Now we generate an error to STDERR

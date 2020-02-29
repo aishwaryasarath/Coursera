@@ -1,0 +1,30 @@
+(venv) (base) Rakeshs-Air:CourseraGoogle rakeshravindran$ mkdir mynewdir
+(venv) (base) Rakeshs-Air:CourseraGoogle rakeshravindran$ cd mynewdir
+(venv) (base) Rakeshs-Air:mynewdir rakeshravindran$ pwd
+/Users/rakeshravindran/PycharmProjects/PythonED/CourseraGoogle/mynewdir
+(venv) (base) Rakeshs-Air:mynewdir rakeshravindran$ cp ../spider.txt .
+(venv) (base) Rakeshs-Air:mynewdir rakeshravindran$ touch myfile.txt
+(venv) (base) Rakeshs-Air:mynewdir rakeshravindran$ ls -l
+total 8
+-rw-r--r--  1 rakeshravindran  staff    0 Feb 28 18:11 myfile.txt
+-rw-r--r--  1 rakeshravindran  staff  190 Feb 28 18:11 spider.txt
+(venv) (base) Rakeshs-Air:mynewdir rakeshravindran$ ls -la
+total 8
+drwxr-xr-x   4 rakeshravindran  staff  128 Feb 28 18:11 .
+drwxr-xr-x  25 rakeshravindran  staff  800 Feb 28 18:11 ..
+-rw-r--r--   1 rakeshravindran  staff    0 Feb 28 18:11 myfile.txt
+-rw-r--r--   1 rakeshravindran  staff  190 Feb 28 18:11 spider.txt
+(venv) (base) Rakeshs-Air:mynewdir rakeshravindran$ mv myfile.txt emptyfile.txt
+(venv) (base) Rakeshs-Air:mynewdir rakeshravindran$ cp spider.txt yetanotherfile.txt
+(venv) (base) Rakeshs-Air:mynewdir rakeshravindran$ ls -l
+total 16
+-rw-r--r--  1 rakeshravindran  staff    0 Feb 28 18:11 emptyfile.txt
+-rw-r--r--  1 rakeshravindran  staff  190 Feb 28 18:11 spider.txt
+-rw-r--r--  1 rakeshravindran  staff  190 Feb 28 18:14 yetanotherfile.txt
+(venv) (base) Rakeshs-Air:mynewdir rakeshravindran$ rm *
+(venv) (base) Rakeshs-Air:mynewdir rakeshravindran$ ls -l
+(venv) (base) Rakeshs-Air:mynewdir rakeshravindran$ cd ..
+(venv) (base) Rakeshs-Air:CourseraGoogle rakeshravindran$ rmdir mynewdir
+(venv) (base) Rakeshs-Air:CourseraGoogle rakeshravindran$ rmdir mynewdir
+rmdir: mynewdir: No such file or directory
+(venv) (base) Rakeshs-Air:CourseraGoogle rakeshravindran$ 
