@@ -9,7 +9,8 @@ with open(logfile) as f:
     for line in f:
         if "CRON" not in line:
             continue
-        pattern = r"USER \((\w+)\)$"
+        with open(logfile) as f:
+            for line in f:
         result = re.search(pattern, line)
         if result is None: #to check that we actually got a match to our
             # regular expression
