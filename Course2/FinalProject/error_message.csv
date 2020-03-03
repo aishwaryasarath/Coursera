@@ -1,0 +1,41 @@
+Error,Count
+Timeout while retrieving information,15
+Connection to DB failed,13
+Tried to add information to closed ticket,12
+Permission denied while closing ticket,10
+The ticket was modified while updating,9
+Ticket doesn't exist,7
+Created ticket [#4217],1
+Closed ticket [#1754],1
+Commented on ticket [#4709],1
+Commented on ticket [#6518],1
+Commented on ticket [#1097],1
+Created ticket [#7115],1
+Commented on ticket [#2253],1
+Created ticket [#7298],1
+Commented on ticket [#7255],1
+Closed ticket [#1712],1
+Created ticket [#2860],1
+Commented on ticket [#8385],1
+Closed ticket [#2452],1
+Commented on ticket [#4562],1
+Created ticket [#7897],1
+Created ticket [#5784],1
+Closed ticket [#8685],1
+Commented on ticket [#4225],1
+Closed ticket [#7948],1
+Commented on ticket [#8628],1
+Closed ticket [#7333],1
+Commented on ticket [#1653],1
+Created ticket [#5455],1
+Commented on ticket [#3813],1
+Closed ticket [#8604],1
+Created ticket [#6361],1
+Commented on ticket [#7159],1
+Created ticket [#7737],1
+Closed ticket [#4372],1
+Commented on ticket [#2389],1
+Closed ticket [#3297],1
+Created ticket [#2461],1
+Closed ticket [#9876],1
+Created ticket [#5896],1
