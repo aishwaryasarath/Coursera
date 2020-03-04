@@ -4,12 +4,12 @@
 def loop(start, stop, step):
 	return_string = ""
 	if step == 0:
-
+		step = 1
 	if start>stop:
 		step = abs(step) * -1
 	else:
 		step = abs(step)
-	for ___:
+	for count in range(start,stop, step):
 		return_string += str(count) + " "
 	return return_string.strip()
 
