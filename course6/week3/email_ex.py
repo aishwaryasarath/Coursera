@@ -5,7 +5,7 @@ import smtplib
 import getpass
 
 sender = "aishwaryasarath04@gmail.com"
-recipient = "rakesh.rav@gmail.com"
+recipient = "aishwaryasarath@gmail.com"
 
 message = EmailMessage()
 
@@ -19,7 +19,10 @@ body = """Hey there!
 
 message.set_content(body)
 
-attachment_path = os.getcwd() + "/tmp/example.png"
+#attachment_path = os.getcwd() + "/tmp/example.png"
+my_path = os.path.abspath(os.path.dirname(__file__))
+attachment_path = os.path.join(my_path, "tmp\example.png")
+#print("mypath:",attachment_path)
 attachment_filename = os.path.basename(attachment_path)
 mime_type, _ = mimetypes.guess_type(attachment_path)
 print(mime_type)

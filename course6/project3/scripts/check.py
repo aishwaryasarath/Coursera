@@ -1,3 +1,5 @@
+import json
+data = '''
 [{"id":1,"car":{"car_make":"Ford","car_model":"Club Wagon","car_year":1997},"price":"$5179.39","total_sales":446},
 {"id":2,"car":{"car_make":"Acura","car_model":"TL","car_year":2005},"price":"$14558.19","total_sales":589},
 {"id":3,"car":{"car_make":"Volkswagen","car_model":"Jetta","car_year":2009},"price":"$14879.11","total_sales":825},
@@ -483,3 +485,11 @@
 {"id":483,"car":{"car_make":"Pontiac","car_model":"Grand Prix","car_year":1989},"price":"$18793.51","total_sales":986},
 {"id":484,"car":{"car_make":"Audi","car_model":"A8","car_year":2010},"price":"$6605.02","total_sales":294},
 {"id":485,"car":{"car_make":"Hyundai","car_model":"Sonata","car_year":2008},"price":"$12011.32","total_sales":1189}]
+'''
+info = json.loads(data)
+sum = 0
+for item in info:
+    #print(item)
+    if item['car']['car_year'] == 2007:
+        sum+=item['total_sales']
+print(sum)
