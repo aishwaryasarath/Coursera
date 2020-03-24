@@ -1,0 +1,5 @@
+[{"id":1,"car":{"car_make":"Ford","car_model":"Club Wagon","car_year":1997},"price":"$5179.39","total_sales":446},
+{"id":2,"car":{"car_make":"Acura","car_model":"TL","car_year":2005},"price":"$14558.19","total_sales":589},
+{"id":3,"car":{"car_make":"Volkswagen","car_model":"Jetta","car_year":2009},"price":"$14879.11","total_sales":825},
+{"id":4,"car":{"car_make":"Chevrolet","car_model":"Uplander","car_year":2006},"price":"$17045.06","total_sales":689},
+{"id":5,"car":{"car_make":"Plymouth","car_model":"Roadrunner","car_year":1969},"price":"$14770.44","total_sales":691}]
