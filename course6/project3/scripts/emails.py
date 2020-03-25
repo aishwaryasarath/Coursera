@@ -15,7 +15,8 @@ def generate(sender, recipient, subject, body, attachment_path):
   message.set_content(body)
 
   # Process the attachment and add it to the email
-  attachment_filename = os.path.basename(attachment_path)
+  #attachment_filename = os.path.basename(attachment_path)
+  attachment_filename = os.getcwd()+attachment_path
   mime_type, _ = mimetypes.guess_type(attachment_path)
   mime_type, mime_subtype = mime_type.split('/', 1)
 
@@ -29,6 +30,7 @@ def generate(sender, recipient, subject, body, attachment_path):
 
 def send(message):
   """Sends the message to the configured SMTP server."""
+
   mail_server = smtplib.SMTP('localhost')
   mail_server.send_message(message)
   mail_server.quit()
